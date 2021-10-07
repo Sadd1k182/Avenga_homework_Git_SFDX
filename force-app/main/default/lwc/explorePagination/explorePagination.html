@@ -1,0 +1,40 @@
+<template>
+    <div>
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <thead>
+                <tr>
+                    <th>
+                        <div>Id</div>
+                    </th>
+                    <th>
+                        <div>Name</div>
+                    </th>
+                    <th>
+                        <div>Phone</div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={accounts} for:item="account">
+                    <tr key={account.Id}>
+                        <td key={account.Id}>
+                            {account.Id}
+                        </td>
+                        <td key={account.Name}>
+                            {account.Name}
+                        </td>
+                        <td key={account.Phone}>
+                            {account.Phone}
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="customPagination">
+        <template for:each={paginationRange} for:item="pageNumber">
+            <a onclick={handlePaginationClick} key={pageNumber} data-target-number={pageNumber}>{pageNumber}</a>
+        </template>
+    </div>
+</template>

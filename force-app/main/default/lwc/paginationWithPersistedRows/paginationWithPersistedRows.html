@@ -1,0 +1,50 @@
+<template>
+    <lightning-card title="Table with Pagination">
+      <lightning-layout multiple-rows="true" horizontal-align="center">
+        <lightning-layout-Item padding="around-small" size="12">
+          <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped">
+            <thead>
+                <tr>
+                    <th>
+                            <div>Id</div>
+                    </th>
+                    <th>
+                            <div>Name</div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={data} for:item="account">
+                    <tr key={account.Id}>
+                        <td key={account.Id}>
+                            {account.Id}
+                        </td>
+                        <td key={account.Name}>
+                            {account.Name}
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+
+        </lightning-layout-Item>
+        <lightning-layout-Item padding="around-small" flexibility="auto">
+          <lightning-button
+            label="Prev"
+            icon-name="utility:chevronleft"
+            icon-position="left"
+            onclick={previousEve}
+            disabled={disPre}>
+          </lightning-button>
+
+          <lightning-button
+            label="Next"
+            icon-name="utility:chevronright"
+            icon-position="right"
+            disabled={isLastPage}
+            onclick={nextEve}>
+          </lightning-button>
+        </lightning-layout-Item>
+      </lightning-layout>
+    </lightning-card>
+  </template>

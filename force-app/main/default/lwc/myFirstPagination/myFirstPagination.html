@@ -1,0 +1,18 @@
+<template>
+    <!-- Main content -->
+    <lightning-card variant="Narrow" title={title} icon-name={iconName}>
+      <!-- Data table  -->
+      <template if:true={data}>
+        <lightning-datatable key-field="id" data={data} columns={columns} onrowaction={handleRowAction}
+          hide-checkbox-column>
+        </lightning-datatable>
+      </template>
+      <!-- Pagination -->
+      <div slot="footer" style="text-align: right;">
+        <lightning-button variant="brand" disabled={isDisablePrev} label="Previous" title="Primary action"
+          onclick={previous} class="slds-m-left_xx-small"></lightning-button>
+        <lightning-button variant="brand" disabled={isDisableNext} label="Next" title="Primary action" onclick={next}
+          class="slds-m-left_xx-small"></lightning-button>
+      </div>
+    </lightning-card>
+  </template>

@@ -1,0 +1,29 @@
+<template>
+    <lightning-card title="Account List" icon-name="custom:custom63">  
+      <div class="slds-m-around_medium">  
+        <template if:true={listMode}>  
+          <template if:true={accounts.data}>  
+            <table border="1">  
+              <thead>  
+                <tr>  
+                  <th>Name</th>  
+                  <th>Number</th>  
+                  <th>Phone</th>  
+                </tr>  
+              </thead>  
+              <tbody>  
+                <template for:each={accounts.data.records} for:item="acc">  
+                  <tr key={acc.Id}>  
+                    <td>{acc.Name}</td>  
+                    <td>{acc.AccountNumber}</td>  
+                    <td>{acc.Phone}</td>  
+                  </tr>  
+                </template>  
+              </tbody>  
+            </table>  
+            <c-pagination page-number={pageNumber} page-size={accounts.data.pageSize} total-item-count={accounts.data.totalItemCount} onprevious={handlePreviousPage} onnext={handleNextPage}></c-pagination>  
+          </template>  
+        </template>  
+      </div>  
+    </lightning-card>  
+  </template>

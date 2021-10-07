@@ -1,0 +1,44 @@
+<template> 
+    <div class="slds-box slds-theme--default"> 
+        <div class="slds-text-color_inverse slds-text-heading_large" style="padding:0.5rem;background:#16325c">        
+            Accounts
+        </div>
+        <div style="width:200px; padding:0.5rem;">
+            <lightning-combobox name="filter"
+                                label="Status"
+                                value={selectedValue}
+                                variant="label-hidden"
+                                options={options}
+                                onchange={handleChange}
+                                placeholder="Select Industry to filter"></lightning-combobox>
+        </div>
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="" scope="col">Account Name</th>
+                    <th class="" scope="col">Account Number</th>
+                    <th class="" scope="col">Industry</th>
+                    <th class="" scope="col">Rating</th>
+                    <th class="" scope="col">Type</th>
+                    <th class="" scope="col">Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template iterator:it={records}>
+                    <tr class="slds-hint-parent" key = {it.value.Id}>
+                        <td data-label="Account Name">{it.value.Name}</td>
+                        <td data-label="Account Number">{it.value.AccountNumber}</td>
+                        <td data-label="Industry">
+                            <template if:true={industryPicklist.data}>
+                                <lightning-combobox label="" options={industryPicklist.data.values} onchange={handleChangeStatus} for:index={index}>{it.value.Industry}</lightning-combobox>
+                            </template>
+                        </td>
+                        <td data-label="Rating">{it.value.Rating}</td>
+                        <td data-label="Type">{it.value.Type}</td>
+                        <td data-label="Phone">{it.value.Phone}</td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </div>
+</template>
